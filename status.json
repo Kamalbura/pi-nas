@@ -1,82 +1,82 @@
 {
-    "timestamp": "2026-06-28 17:51:49 IST",
-    "system": {
-        "hostname": "bura",
-        "os": "Debian 13 (Trixie)",
-        "kernel": "6.12.75+rpt-rpi-v8",
-        "arch": "aarch64",
-        "uptime": "3 days, 18 hours, 11 minutes",
-        "uptime_seconds": 324683,
-        "load": "2.83 2.20 1.72",
-        "temperature_c": 56.0,
-        "throttled": "No",
-        "voltage_v": 1.01,
-        "cpu": {
-            "model": "Cortex-A72",
-            "cores": 4,
-            "max_freq_mhz": 2000.0
-        },
-        "memory": {
-            "total": "7.6Gi",
-            "used": "4.3Gi",
-            "percent": 56,
-            "swap_total": "2.0Gi",
-            "swap_used": "1.3Gi",
-            "swap_percent": 67
-        }
+  "timestamp": "2026-06-28 17:53:38 IST",
+  "system": {
+    "hostname": "bura",
+    "os": "Debian 13 (Trixie)",
+    "kernel": "6.12.75+rpt-rpi-v8",
+    "arch": "aarch64",
+    "uptime": "3 days, 18 hours, 13 minutes",
+    "uptime_seconds": 324792,
+    "load": "3.04 2.41 1.85",
+    "temperature_c": 56.5,
+    "throttled": "No",
+    "voltage_v": 1.01,
+    "cpu": {
+      "model": "Cortex-A72",
+      "cores": 4,
+      "max_freq_mhz": 2000.0
     },
-    "storage": {
-        "ssd": {
-            "model": "WDC WDS120G2G0A-00JH30",
-            "device": "/dev/sda",
-            "total": "111.8G",
-            "used": "43G",
-            "available": "62G",
-            "percent_used": 41,
-            "mount": "/",
-            "smart": {
-                "health": "PASSED",
-                "temperature_c": "48",
-                "power_on_hours": "734",
-                "reallocated_sectors": "1",
-                "wearout_indicator": "0x043302280433"
-            }
-        },
-        "hdd": {
-            "model": "ST9500325AS",
-            "device": "/dev/sdb",
-            "total": "465.8G",
-            "used": "2.1M",
-            "available": "435G",
-            "percent_used": 1,
-            "mount": "/mnt/nas (label: OLD MAN)",
-            "state": "active/idle",
-            "smart": {
-                "health": "PASSED",
-                "temperature_c": "36",
-                "power_on_hours": "1868",
-                "reallocated_sectors": "0",
-                "load_cycle_count": "20310"
-            }
-        }
-    },
-    "network": {
-        "lan_ip": "192.168.1.2/24",
-        "tailscale_ip": "100.111.13.58/32",
-        "magicdns": "bura.tailcdf1f7.ts.net",
-        "tailscale_serve": "http://bura:8080 (tailnet only) http://bura.tailcdf1f7.ts.net:8080 (tailnet only)||-- / proxy http://127.0.0.1:8080"
-    },
-    "containers": {
-        "running": 13,
-        "total": 14,
-        "list": [
-            "{\"name\":\"nas-samba\",\"image\":\"crazymax/samba:latest\",\"status\":\"Up 23 minutes (healthy)\",\"ports\":\"\"},{\"name\":\"nas-gui\",\"image\":\"filebrowser/filebrowser:latest\",\"status\":\"Up 6 minutes (healthy)\",\"ports\":\"127.0.0.1:8080->80/tcp\"},{\"name\":\"smartctl_exporter\",\"image\":\"monitoring-smartctl_exporter\",\"status\":\"Up 3 days\",\"ports\":\"8002/tcp\"},{\"name\":\"grafana\",\"image\":\"grafana/grafana:latest\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:3001->3000/tcp, :::3001->3000/tcp\"},{\"name\":\"bmp280_exporter\",\"image\":\"monitoring-bmp280_exporter\",\"status\":\"Up 3 days\",\"ports\":\"\"},{\"name\":\"prometheus\",\"image\":\"prom/prometheus:latest\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:9090->9090/tcp, :::9090->9090/tcp\"},{\"name\":\"sds011_exporter\",\"image\":\"monitoring-sds011_exporter\",\"status\":\"Up 3 days\",\"ports\":\"\"},{\"name\":\"github-mcp\",\"image\":\"mcp-services-github-mcp\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:3003->3001/tcp, :::3003->3001/tcp\"},{\"name\":\"search-mcp\",\"image\":\"mcp-services-search-mcp\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:3002->3002/tcp, :::3002->3002/tcp\"},{\"name\":\"node_exporter\",\"image\":\"quay.io/prometheus/node-exporter:latest\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:9100->9100/tcp, :::9100->9100/tcp\"},{\"name\":\"pi_airflow-dashboard-1\",\"image\":\"node:20-alpine\",\"status\":\"Exited (0) 7 weeks ago\",\"ports\":\"\"},{\"name\":\"mediamtx\",\"image\":\"bluenviron/mediamtx:latest\",\"status\":\"Up 3 days\",\"ports\":\"\"},{\"name\":\"security-lab\",\"image\":\"security-lab-security-lab\",\"status\":\"Up 3 days\",\"ports\":\"\"},{\"name\":\"pihole\",\"image\":\"pihole/pihole:latest\",\"status\":\"Up 3 days (healthy)\",\"ports\":\"\"}"
-        ]
-    },
-    "maintenance": {
-        "last_smart_report": "2026-06-28 03:02:16",
-        "hdd_spindown": "10 min idle (APM 127, standby -S 120)",
-        "smart_schedule": "Every Sunday 3am",
-        "compose_stacks": "/home/bura/monitoring/docker-compose.yml, /home/bura/homelab/nas/docker-compose.yml, /home/bura/mcp-services/docker-compose.yml, /home/bura/security-lab/docker-compose.yml"
+    "memory": {
+      "total": "7.6Gi",
+      "used": "4.2Gi",
+      "percent": 56,
+      "swap_total": "2.0Gi",
+      "swap_used": "1.3Gi",
+      "swap_percent": 67
     }
+  },
+  "storage": {
+    "ssd": {
+      "model": "WDC WDS120G2G0A-00JH30",
+      "device": "/dev/sda",
+      "total": "111.8G",
+      "used": "43G",
+      "available": "62G",
+      "percent_used": 41,
+      "mount": "/",
+      "smart": {
+        "health": "PASSED",
+        "temperature_c": "48",
+        "power_on_hours": "734",
+        "reallocated_sectors": "1",
+        "wearout_indicator": "0x043302280433"
+      }
+    },
+    "hdd": {
+      "model": "ST9500325AS",
+      "device": "/dev/sdb",
+      "total": "465.8G",
+      "used": "27M",
+      "available": "435G",
+      "percent_used": 1,
+      "mount": "/mnt/nas (label: OLD MAN)",
+      "state": "active/idle",
+      "smart": {
+        "health": "PASSED",
+        "temperature_c": "36",
+        "power_on_hours": "1868",
+        "reallocated_sectors": "0",
+        "load_cycle_count": "20311"
+      }
+    }
+  },
+  "network": {
+    "lan_ip": "192.168.1.2/24",
+    "tailscale_ip": "100.111.13.58/32",
+    "magicdns": "bura.tailcdf1f7.ts.net",
+    "tailscale_serve": "http://bura:8080 (tailnet only) http://bura.tailcdf1f7.ts.net:8080 (tailnet only)||-- / proxy http://127.0.0.1:8080"
+  },
+  "containers": {
+    "running": 13,
+    "total": 14,
+    "list": [
+      "{\"name\":\"nas-samba\",\"image\":\"crazymax/samba:latest\",\"status\":\"Up 25 minutes (healthy)\",\"ports\":\"\"},{\"name\":\"nas-gui\",\"image\":\"filebrowser/filebrowser:latest\",\"status\":\"Up 8 minutes (healthy)\",\"ports\":\"127.0.0.1:8080->80/tcp\"},{\"name\":\"smartctl_exporter\",\"image\":\"monitoring-smartctl_exporter\",\"status\":\"Up 3 days\",\"ports\":\"8002/tcp\"},{\"name\":\"grafana\",\"image\":\"grafana/grafana:latest\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:3001->3000/tcp, :::3001->3000/tcp\"},{\"name\":\"bmp280_exporter\",\"image\":\"monitoring-bmp280_exporter\",\"status\":\"Up 3 days\",\"ports\":\"\"},{\"name\":\"prometheus\",\"image\":\"prom/prometheus:latest\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:9090->9090/tcp, :::9090->9090/tcp\"},{\"name\":\"sds011_exporter\",\"image\":\"monitoring-sds011_exporter\",\"status\":\"Up 3 days\",\"ports\":\"\"},{\"name\":\"github-mcp\",\"image\":\"mcp-services-github-mcp\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:3003->3001/tcp, :::3003->3001/tcp\"},{\"name\":\"search-mcp\",\"image\":\"mcp-services-search-mcp\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:3002->3002/tcp, :::3002->3002/tcp\"},{\"name\":\"node_exporter\",\"image\":\"quay.io/prometheus/node-exporter:latest\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:9100->9100/tcp, :::9100->9100/tcp\"},{\"name\":\"pi_airflow-dashboard-1\",\"image\":\"node:20-alpine\",\"status\":\"Exited (0) 7 weeks ago\",\"ports\":\"\"},{\"name\":\"mediamtx\",\"image\":\"bluenviron/mediamtx:latest\",\"status\":\"Up 3 days\",\"ports\":\"\"},{\"name\":\"security-lab\",\"image\":\"security-lab-security-lab\",\"status\":\"Up 3 days\",\"ports\":\"\"},{\"name\":\"pihole\",\"image\":\"pihole/pihole:latest\",\"status\":\"Up 3 days (healthy)\",\"ports\":\"\"}"
+    ]
+  },
+  "maintenance": {
+    "last_smart_report": "2026-06-28 03:02:16",
+    "hdd_spindown": "10 min idle (APM 127, standby -S 120)",
+    "smart_schedule": "Every Sunday 3am",
+    "compose_stacks": "/home/bura/monitoring/docker-compose.yml, /home/bura/homelab/nas/docker-compose.yml, /home/bura/mcp-services/docker-compose.yml, /home/bura/security-lab/docker-compose.yml"
+  }
 }
