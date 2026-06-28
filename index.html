@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pi NAS — Bura's Homelab</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+    --green: #3fb950;
+    --yellow: #d29922;
+    --red: #f85149;
+    --blue: #58a6ff;
+    --purple: #bc8cff;
+    --accent: #1f6feb;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 2rem; margin-bottom: 4px; }
+  h2 {
+    font-size: 1.3rem;
+    margin: 28px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+    color: var(--blue);
+  }
+  h3 { font-size: 1rem; margin: 16px 0 8px; color: var(--purple); }
+  .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }
+  .badge-green { background: rgba(63,185,80,0.15); color: var(--green); }
+  .badge-yellow { background: rgba(210,153,34,0.15); color: var(--yellow); }
+  .badge-red { background: rgba(248,81,73,0.15); color: var(--red); }
+  .badge-blue { background: rgba(88,166,255,0.15); color: var(--blue); }
+  .badge-gray { background: rgba(139,148,158,0.15); color: var(--muted); }
+
+  .status-bar {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    padding: 16px; background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; margin-bottom: 24px;
+  }
+  .status-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dot-green { background: var(--green); }
+  .dot-yellow { background: var(--yellow); }
+  .dot-red { background: var(--red); }
+  .dot-blue { background: var(--blue); }
+  .dot-gray { background: var(--muted); }
+  .timestamp { color: var(--muted); font-size: 0.8rem; margin-left: auto; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 18px; margin-bottom: 12px;
+  }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .card h3 { margin-top: 0; margin-bottom: 10px; }
+  .card table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .card td { padding: 4px 6px; }
+  .card td:first-child { color: var(--muted); white-space: nowrap; width: 1%; padding-right: 12px; }
+  pre {
+    background: #0d1117; border: 1px solid var(--border);
+    border-radius: 6px; padding: 12px; overflow-x: auto;
+    font-size: 0.8rem; line-height: 1.5;
+  }
+  .container-table { display: grid; gap: 8px; }
+  .container-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 12px; background: rgba(13,17,23,0.5); border-radius: 6px;
+    font-size: 0.85rem;
+  }
+  .container-name { font-weight: 600; }
+  .container-status { font-size: 0.8rem; }
+  .container-image { color: var(--muted); font-size: 0.8rem; }
+  .loading { text-align: center; padding: 40px; color: var(--muted); }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .footer { margin-top: 40px; padding: 16px; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
+  .inline-code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.85em; background: rgba(0,0,0,0.3); padding: 1px 5px; border-radius: 3px; }
+
+  .progress-bar { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin-top: 3px; }
+  .progress-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+  .progress-green { background: var(--green); }
+  .progress-yellow { background: var(--yellow); }
+  .progress-red { background: var(--red); }
+
+  .smarts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin-top: 8px; }
+  .smart-item {
+    background: rgba(13,17,23,0.3); padding: 8px 12px; border-radius: 6px;
+    display: flex; justify-content: space-between; font-size: 0.85rem;
+  }
+  .smart-label { color: var(--muted); }
+  .smart-value { font-weight: 600; }
+
+  .section-nav {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;
+    padding: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  }
+  .section-nav a { padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; color: var(--muted); }
+  .section-nav a:hover { background: rgba(88,166,255,0.1); color: var(--blue); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1> Pi NAS</h1>
+<div class="subtitle">Bura's Homelab — Raspberry Pi 4B NAS Server</div>
+
+<!-- Live Status Bar (populated by JS) -->
+<div id="status-bar" class="status-bar"><div class="loading">Loading status...</div></div>
+
+<!-- Nav -->
+<div class="section-nav">
+  <a href="#hardware">Hardware</a>
+  <a href="#storage">Storage</a>
+  <a href="#network">Network</a>
+  <a href="#containers">Containers</a>
+  <a href="#nas">NAS Setup</a>
+  <a href="#monitoring">Monitoring</a>
+  <a href="#power">Power</a>
+  <a href="#config">Config</a>
+</div>
+
+<!-- ==================== HARDWARE ==================== -->
+<h2 id="hardware">Hardware</h2>
+<div class="card">
+  <table>
+    <tr><td>Model</td><td>Raspberry Pi 4 Model B (4GB)</td></tr>
+    <tr><td>SoC</td><td>BCM2711 — Cortex-A72 (4 cores, 2.0 GHz)</td></tr>
+    <tr><td>Memory</td><td id="mem-info">4 GB LPDDR4</td></tr>
+    <tr><td>OS</td><td>Debian 13 (Trixie) — <span class="inline-code">aarch64</span></td></tr>
+    <tr><td>Kernel</td><td id="kernel-info">—</td></tr>
+    <tr><td>Uptime</td><td id="uptime-info">—</td></tr>
+    <tr><td>Load</td><td id="load-info">—</td></tr>
+    <tr><td>Temperature</td><td id="temp-info">—</td></tr>
+    <tr><td>Throttled</td><td id="throttled-info">—</td></tr>
+    <tr><td>Voltage</td><td id="volt-info">—</td></tr>
+  </table>
+</div>
+
+<!-- ==================== STORAGE ==================== -->
+<h2 id="storage">Storage</h2>
+
+<div class="card-grid">
+  <div class="card">
+    <h3>SSD — Boot Drive <span id="ssd-badge" class="badge badge-green">/dev/sda</span></h3>
+    <table>
+      <tr><td>Model</td><td id="ssd-model">—</td></tr>
+      <tr><td>Capacity</td><td id="ssd-total">—</td></tr>
+      <tr><td>Used</td><td id="ssd-used">—</td></tr>
+      <tr><td>Available</td><td id="ssd-avail">—</td></tr>
+      <tr><td>Mount</td><td>/ (rootfs)</td></tr>
+    </table>
+    <div id="ssd-bar" class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+    <div class="smarts-grid" id="ssd-smart">
+      <div class="smart-item"><span class="smart-label">Health</span><span id="ssd-health">—</span></div>
+      <div class="smart-item"><span class="smart-label">Temp</span><span id="ssd-temp">—</span></div>
+      <div class="smart-item"><span class="smart-label">Power-On</span><span id="ssd-poh">—</span></div>
+      <div class="smart-item"><span class="smart-label">Reallocated</span><span id="ssd-realloc">—</span></div>
+      <div class="smart-item"><span class="smart-label">Wearout</span><span id="ssd-wear">—</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>HDD — NAS Storage <span id="hdd-badge" class="badge badge-yellow">/dev/sdb</span></h3>
+    <table>
+      <tr><td>Model</td><td id="hdd-model">—</td></tr>
+      <tr><td>Capacity</td><td id="hdd-total">—</td></tr>
+      <tr><td>Used</td><td id="hdd-used">—</td></tr>
+      <tr><td>Available</td><td id="hdd-avail">—</td></tr>
+      <tr><td>Mount</td><td>/mnt/nas (label: <span class="inline-code">OLD MAN</span>)</td></tr>
+      <tr><td>State</td><td id="hdd-state">—</td></tr>
+    </table>
+    <div id="hdd-bar" class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+    <div class="smarts-grid" id="hdd-smart">
+      <div class="smart-item"><span class="smart-label">Health</span><span id="hdd-health">—</span></div>
+      <div class="smart-item"><span class="smart-label">Temp</span><span id="hdd-temp">—</span></div>
+      <div class="smart-item"><span class="smart-label">Power-On</span><span id="hdd-poh">—</span></div>
+      <div class="smart-item"><span class="smart-label">Reallocated</span><span id="hdd-realloc">—</span></div>
+      <div class="smart-item"><span class="smart-label">Load Cycles</span><span id="hdd-loadcycle">—</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== NETWORK ==================== -->
+<h2 id="network">Network</h2>
+<div class="card-grid">
+  <div class="card">
+    <h3>LAN</h3>
+    <table>
+      <tr><td>IP</td><td id="lan-ip">—</td></tr>
+      <tr><td>Interface</td><td>eth0</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h3>Tailscale</h3>
+    <table>
+      <tr><td>IP</td><td id="ts-ip">—</td></tr>
+      <tr><td>MagicDNS</td><td id="ts-dns">—</td></tr>
+      <tr><td>Serve</td><td id="ts-serve">—</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== FILESHARE ACCESS ==================== -->
+<h2 id="nas">NAS Access</h2>
+<div class="card-grid">
+  <div class="card">
+    <h3>Web GUI (FileBrowser)</h3>
+    <table>
+      <tr><td>Tailnet</td><td><a href="http://bura.tailcdf1f7.ts.net:8080" target="_blank">http://bura.tailcdf1f7.ts.net:8080</a></td></tr>
+      <tr><td>Admin</td><td><span class="inline-code">admin</span> / <span class="inline-code">Admin@#2004,!</span></td></tr>
+      <tr><td>Container</td><td><span class="inline-code">nas-gui</span> (filebrowser/filebrowser)</td></tr>
+      <tr><td>Backend</td><td><span class="inline-code">127.0.0.1:8080</span> (localhost only)</td></tr>
+      <tr><td>Protocol</td><td>HTTP via tailscale serve (encrypted by WireGuard)</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h3>SMB (Samba)</h3>
+    <table>
+      <tr><td>Host</td><td><span class="inline-code">\\bura.local</span> (LAN) or use Tailscale IP</td></tr>
+      <tr><td>Container</td><td><span class="inline-code">nas-samba</span> (crazymax/samba)</td></tr>
+      <tr><td>Network</td><td><span class="inline-code">host</span> mode</td></tr>
+    </table>
+    <h3 style="margin-top:12px">Samba Users</h3>
+    <table>
+      <tr><td>user1</td><td>UID 1000, GID 1000</td><td><span class="badge badge-blue">Private: User1_Private</span></td></tr>
+      <tr><td>user2</td><td>UID 1001, GID 1001</td><td><span class="badge badge-blue">Private: User2_Private</span></td></tr>
+      <tr><td>user3</td><td>UID 1002, GID 1002</td><td><span class="badge badge-blue">Private: User3_Private</span></td></tr>
+      <tr><td>Shared</td><td colspan="2"><span class="badge badge-green">Family_Shared</span> — all users R/W</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== CONTAINERS ==================== -->
+<h2 id="containers">Docker Containers</h2>
+<div class="card">
+  <div style="margin-bottom:12px">
+    <span id="container-running" class="badge badge-green">0 running</span>
+    <span id="container-total" class="badge badge-gray">0 total</span>
+  </div>
+  <div id="container-list" class="container-table"><div class="loading">Loading...</div></div>
+</div>
+
+<h3>Docker Compose Stacks</h3>
+<div class="card">
+<pre id="compose-stacks">—</pre>
+</div>
+
+<!-- ==================== MONITORING ==================== -->
+<h2 id="monitoring">Monitoring Stack</h2>
+<div class="card-grid">
+  <div class="card">
+    <h3>Prometheus</h3>
+    <table>
+      <tr><td>Access</td><td><a href="http://bura.tailcdf1f7.ts.net:9090" target="_blank">http://bura.tailcdf1f7.ts.net:9090</a></td></tr>
+      <tr><td>Retention</td><td>30 days</td></tr>
+      <tr><td>Scrape Interval</td><td>15s (60s for sensors)</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h3>Grafana</h3>
+    <table>
+      <tr><td>Access</td><td><a href="http://bura.tailcdf1f7.ts.net:3001" target="_blank">http://bura.tailcdf1f7.ts.net:3001</a></td></tr>
+      <tr><td>Login</td><td><span class="inline-code">admin</span> / <span class="inline-code">admin</span></td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h3>Exporters</h3>
+    <table>
+      <tr><td>Node Exporter</td><td><span class="inline-code">:9100</span></td></tr>
+      <tr><td>BMP280 (temp/pressure)</td><td><span class="inline-code">:8001</span></td></tr>
+      <tr><td>SDS011 (PM2.5/PM10)</td><td><span class="inline-code">:8000</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== SMART ==================== -->
+<h2 id="power">Power &amp; Maintenance</h2>
+<div class="card-grid">
+  <div class="card">
+    <h3>HDD Spin-Down</h3>
+    <table>
+      <tr><td>Standby Timer</td><td>10 min idle (hdparm <span class="inline-code">-S 120</span>)</td></tr>
+      <tr><td>APM</td><td>127 (allow spin-down)</td></tr>
+      <tr><td>Applied via</td><td>systemd service + udev rule</td></tr>
+      <tr><td>Current State</td><td id="hdd-state2">—</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h3>SMART Monitoring</h3>
+    <table>
+      <tr><td>Schedule</td><td>Every Sunday 3am (systemd timer)</td></tr>
+      <tr><td>Last Report</td><td id="last-smart">—</td></tr>
+      <tr><td>Report Path</td><td><span class="inline-code">~/smart-reports/</span></td></tr>
+      <tr><td>Continuous Polling</td><td><span class="badge badge-red">Disabled</span> (was keeping HDD active)</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h3>Swap &amp; Memory</h3>
+    <table>
+      <tr><td>Swap</td><td id="swap-info">—</td></tr>
+      <tr><td>ZRAM</td><td>2 GB, zstd compression</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== CONFIGURATION ==================== -->
+<h2 id="config">Configuration</h2>
+
+<h3>FileBrowser Settings</h3>
+<div class="card">
+<pre>{
+  "port": 80,
+  "address": "",
+  "database": "/database/filebrowser.db",
+  "root": "/srv"
+}</pre>
+</div>
+
+<h3>Samba Config</h3>
+<div class="card">
+<pre id="samba-config">Loading...</pre>
+</div>
+
+<h3>HDD Power (systemd service)</h3>
+<div class="card">
+<pre>/etc/systemd/system/hdd-powermanage.service
+/etc/udev/rules.d/99-hdd-powermanage.rules</pre>
+</div>
+
+<h3>fstab</h3>
+<div class="card">
+<pre>UUID=2f7357f1-67a3-4e4a-898c-0296c2c055d4 /mnt/nas ext4 defaults,noatime,nofail 0 2</pre>
+</div>
+
+<h3>Prometheus Config</h3>
+<div class="card">
+<pre>global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['node_exporter:9100']
+  - job_name: 'sds011'
+    static_configs:
+      - targets: ['sds011_exporter:8000']
+  - job_name: 'bmp280'
+    static_configs:
+      - targets: ['bmp280_exporter:8001']</pre>
+</div>
+
+<h3>Monitoring Compose</h3>
+<div class="card">
+<pre id="monitoring-compose">Loading...</pre>
+</div>
+
+<h3>NAS Compose</h3>
+<div class="card">
+<pre id="nas-compose">Loading...</pre>
+</div>
+
+<div class="footer">
+  Last updated: <span id="page-updated">—</span> |
+  <a href="https://github.com/burakamal13/pi-nas" target="_blank">GitHub</a>
+</div>
+
+</div>
+
+<script>
+let statusData = {};
+const fallback = {};
+
+function getLoadColor(val) {
+  const v = parseFloat(val[0]);
+  if (isNaN(v)) return 'gray';
+  if (v < 1.0) return 'green';
+  if (v < 2.0) return 'yellow';
+  return 'red';
+}
+
+function getPercentColor(p) {
+  if (p < 60) return 'green';
+  if (p < 85) return 'yellow';
+  return 'red';
+}
+
+function render(data) {
+  if (!data || !data.system) return;
+
+  const s = data.system;
+  const st = data.storage;
+  const ssd = st ? st.ssd : null;
+  const hdd = st ? st.hdd : null;
+  const net = data.network;
+  const cont = data.containers;
+  const maint = data.maintenance;
+
+  // Status bar
+  const bar = document.getElementById('status-bar');
+  const tempColor = s.temperature_c > 70 ? 'red' : s.temperature_c > 55 ? 'yellow' : 'green';
+  const loadColor = getLoadColor(s.load ? s.load.split(' ') : []);
+  const ssdColor = ssd && ssd.smart.health === 'PASSED' ? 'green' : 'red';
+  const hddColor = hdd && hdd.smart.health === 'PASSED' ? 'green' : 'red';
+
+  bar.innerHTML = `
+    <span class="status-item"><span class="dot dot-${tempColor}"></span>${s.temperature_c}°C</span>
+    <span class="status-item"><span class="dot dot-${loadColor}"></span>Load ${s.load}</span>
+    <span class="status-item"><span class="dot dot-green"></span>Up ${s.uptime}</span>
+    <span class="status-item"><span class="dot dot-${ssdColor}"></span>SSD ${ssd ? ssd.percent_used + '%' : '?'}</span>
+    <span class="status-item"><span class="dot dot-${hddColor}"></span>HDD ${hdd ? hdd.percent_used + '%' : '?'}</span>
+    <span class="status-item"><span class="dot dot-blue"></span>${cont ? cont.running + '/' + cont.total + ' ct' : '?'}</span>
+    <span class="timestamp">${data.timestamp || ''}</span>
+  `;
+
+  // Hardware
+  document.getElementById('kernel-info').textContent = s.kernel || '—';
+  document.getElementById('uptime-info').textContent = s.uptime || '—';
+  document.getElementById('load-info').textContent = s.load || '—';
+  document.getElementById('temp-info').textContent = (s.temperature_c || '?') + '°C';
+  document.getElementById('throttled-info').textContent = s.throttled || '—';
+  document.getElementById('volt-info').textContent = (s.voltage_v || '?') + 'V';
+  document.getElementById('mem-info').innerHTML = `${s.memory.total} total · ${s.memory.used} used (${s.memory.percent}%)`;
+
+  // SSD
+  if (ssd) {
+    document.getElementById('ssd-model').textContent = ssd.model || '—';
+    document.getElementById('ssd-total').textContent = ssd.total || '—';
+    document.getElementById('ssd-used').textContent = ssd.used || '—';
+    document.getElementById('ssd-avail').textContent = ssd.available || '—';
+    const p = ssd.percent_used || 0;
+    const pc = getPercentColor(p);
+    document.querySelector('#ssd-bar .progress-fill').style.width = p + '%';
+    document.querySelector('#ssd-bar .progress-fill').className = 'progress-fill progress-' + pc;
+    document.getElementById('ssd-health').textContent = ssd.smart.health || '—';
+    document.getElementById('ssd-health').parentElement.className = 'smart-item';
+    document.getElementById('ssd-temp').textContent = ssd.smart.temperature_c ? ssd.smart.temperature_c + '°C' : '—';
+    document.getElementById('ssd-poh').textContent = ssd.smart.power_on_hours ? ssd.smart.power_on_hours + 'h' : '—';
+    document.getElementById('ssd-realloc').textContent = ssd.smart.reallocated_sectors || '—';
+    document.getElementById('ssd-wear').textContent = ssd.smart.wearout_indicator || '—';
+  }
+
+  // HDD
+  if (hdd) {
+    document.getElementById('hdd-model').textContent = hdd.model || '—';
+    document.getElementById('hdd-total').textContent = hdd.total || '—';
+    document.getElementById('hdd-used').textContent = hdd.used || '—';
+    document.getElementById('hdd-avail').textContent = hdd.available || '—';
+    document.getElementById('hdd-state').textContent = hdd.state || '—';
+    document.getElementById('hdd-state2').textContent = hdd.state || '—';
+    const p = hdd.percent_used || 0;
+    const pc = getPercentColor(p);
+    document.querySelector('#hdd-bar .progress-fill').style.width = p + '%';
+    document.querySelector('#hdd-bar .progress-fill').className = 'progress-fill progress-' + pc;
+    document.getElementById('hdd-health').textContent = hdd.smart.health || '—';
+    document.getElementById('hdd-temp').textContent = hdd.smart.temperature_c ? hdd.smart.temperature_c + '°C' : '—';
+    document.getElementById('hdd-poh').textContent = hdd.smart.power_on_hours ? hdd.smart.power_on_hours + 'h' : '—';
+    document.getElementById('hdd-realloc').textContent = hdd.smart.reallocated_sectors || '—';
+    document.getElementById('hdd-loadcycle').textContent = hdd.smart.load_cycle_count || '—';
+  }
+
+  // Network
+  if (net) {
+    document.getElementById('lan-ip').textContent = net.lan_ip || '—';
+    document.getElementById('ts-ip').textContent = net.tailscale_ip || '—';
+    document.getElementById('ts-dns').textContent = net.magicdns || '—';
+    document.getElementById('ts-serve').textContent = net.tailscale_serve || '—';
+  }
+
+  // Containers
+  if (cont) {
+    document.getElementById('container-running').textContent = cont.running + ' running';
+    document.getElementById('container-total').textContent = cont.total + ' total';
+    const listDiv = document.getElementById('container-list');
+    if (cont.list && cont.list.length > 0) {
+      let items = cont.list;
+      if (typeof items[0] === 'string') {
+        try { items = JSON.parse('[' + items[0] + ']'); } catch(e) {}
+      }
+      listDiv.innerHTML = items.map(c => {
+        const up = c.status && c.status.startsWith('Up');
+        return `<div class="container-row">
+          <div><span class="container-name">${c.name || '?'}</span> <span class="container-image">${c.image || ''}</span></div>
+          <div><span class="dot ${up ? 'dot-green' : 'dot-red'}"></span> <span class="container-status">${c.status || '?'}</span></div>
+        </div>`;
+      }).join('');
+    } else {
+      listDiv.innerHTML = '<div class="container-row">No containers</div>';
+    }
+  }
+
+  // Maintenance
+  if (maint) {
+    document.getElementById('last-smart').textContent = maint.last_smart_report || '—';
+    document.getElementById('compose-stacks').textContent = maint.compose_stacks || '—';
+  }
+
+  // Memory detail
+  if (s.memory) {
+    document.getElementById('swap-info').textContent = `${s.memory.swap_used || '0'} / ${s.memory.swap_total || '0'} (${s.memory.swap_percent || 0}%)`;
+  }
+
+  document.getElementById('page-updated').textContent = data.timestamp || '—';
+  document.title = s.hostname ? `Pi NAS — ${s.hostname}` : 'Pi NAS';
+}
+
+// Load static config files
+async function loadConfigs() {
+  try {
+    let r = await fetch('/samba-config');
+    document.getElementById('samba-config').textContent = await r.text();
+  } catch(e) {
+    document.getElementById('samba-config').textContent = 'Not available';
+  }
+}
+
+// Load live JSON
+async function loadData() {
+  try {
+    const resp = await fetch('status.json?_=' + Date.now());
+    statusData = await resp.json();
+    render(statusData);
+  } catch(e) {
+    // Try with relative path
+    try {
+      const resp = await fetch('./status.json');
+      statusData = await resp.json();
+      render(statusData);
+    } catch(e2) {
+      document.getElementById('status-bar').innerHTML = `<span class="status-item">Status unavailable — using snapshot data</span>`;
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadData();
+});
+</script>
+</body>
+</html>
