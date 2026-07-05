@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-07-05 01:00:36 IST",
+  "timestamp": "2026-07-06 01:00:25 IST",
   "system": {
     "hostname": "bura",
     "os": "Debian 13 (Trixie)",
     "kernel": "6.12.75+rpt-rpi-v8",
     "arch": "aarch64",
-    "uptime": "2 days, 49 minutes",
-    "uptime_seconds": 175771,
-    "load": "0.26 0.35 0.35",
-    "temperature_c": 39.9,
+    "uptime": "3 days, 49 minutes",
+    "uptime_seconds": 262171,
+    "load": "0.45 0.37 0.42",
+    "temperature_c": 40.4,
     "throttled": "No",
     "voltage_v": 1.01,
     "cpu": {
@@ -18,11 +18,11 @@
     },
     "memory": {
       "total": "7.6Gi",
-      "used": "2.4Gi",
-      "percent": 32,
+      "used": "2.5Gi",
+      "percent": 33,
       "swap_total": "2.0Gi",
-      "swap_used": "0B",
-      "swap_percent": 0
+      "swap_used": "15Mi",
+      "swap_percent": 1
     }
   },
   "storage": {
@@ -37,7 +37,7 @@
       "smart": {
         "health": "PASSED",
         "temperature_c": "44",
-        "power_on_hours": "884",
+        "power_on_hours": "908",
         "reallocated_sectors": "1",
         "wearout_indicator": "0x043602280436"
       }
@@ -53,10 +53,10 @@
       "state": "active/idle",
       "smart": {
         "health": "PASSED",
-        "temperature_c": "30",
-        "power_on_hours": "2019",
+        "temperature_c": "32",
+        "power_on_hours": "2043",
         "reallocated_sectors": "0",
-        "load_cycle_count": "21238"
+        "load_cycle_count": "21264"
       }
     }
   },
@@ -70,11 +70,11 @@
     "running": 13,
     "total": 14,
     "list": [
-      "{\"name\":\"sunshine\",\"image\":\"sunshine-custom:latest\",\"status\":\"Up 2 days\",\"ports\":\"\"},{\"name\":\"nas-samba\",\"image\":\"crazymax/samba:latest\",\"status\":\"Up 2 days (healthy)\",\"ports\":\"\"},{\"name\":\"nas-gui\",\"image\":\"filebrowser/filebrowser:latest\",\"status\":\"Up 2 days (healthy)\",\"ports\":\"127.0.0.1:8080->80/tcp\"},{\"name\":\"smartctl_exporter\",\"image\":\"monitoring-smartctl_exporter\",\"status\":\"Up 2 days\",\"ports\":\"8002/tcp\"},{\"name\":\"grafana\",\"image\":\"grafana/grafana:latest\",\"status\":\"Up 2 days\",\"ports\":\"0.0.0.0:3001->3000/tcp, :::3001->3000/tcp\"},{\"name\":\"bmp280_exporter\",\"image\":\"monitoring-bmp280_exporter\",\"status\":\"Up 2 days\",\"ports\":\"\"},{\"name\":\"prometheus\",\"image\":\"prom/prometheus:latest\",\"status\":\"Up 2 days\",\"ports\":\"0.0.0.0:9090->9090/tcp, :::9090->9090/tcp\"},{\"name\":\"sds011_exporter\",\"image\":\"monitoring-sds011_exporter\",\"status\":\"Up 2 days\",\"ports\":\"\"},{\"name\":\"github-mcp\",\"image\":\"mcp-services-github-mcp\",\"status\":\"Up 2 days\",\"ports\":\"0.0.0.0:3003->3001/tcp, :::3003->3001/tcp\"},{\"name\":\"search-mcp\",\"image\":\"mcp-services-search-mcp\",\"status\":\"Up 2 days\",\"ports\":\"0.0.0.0:3002->3002/tcp, :::3002->3002/tcp\"},{\"name\":\"node_exporter\",\"image\":\"quay.io/prometheus/node-exporter:latest\",\"status\":\"Up 2 days\",\"ports\":\"0.0.0.0:9100->9100/tcp, :::9100->9100/tcp\"},{\"name\":\"pi_airflow-dashboard-1\",\"image\":\"node:20-alpine\",\"status\":\"Exited (0) 8 weeks ago\",\"ports\":\"\"},{\"name\":\"mediamtx\",\"image\":\"bluenviron/mediamtx:latest\",\"status\":\"Up 2 days\",\"ports\":\"\"},{\"name\":\"pihole\",\"image\":\"pihole/pihole:latest\",\"status\":\"Up 2 days (healthy)\",\"ports\":\"\"}"
+      "{\"name\":\"sunshine\",\"image\":\"sunshine-custom:latest\",\"status\":\"Up 3 days\",\"ports\":\"\"},{\"name\":\"nas-samba\",\"image\":\"crazymax/samba:latest\",\"status\":\"Up 3 days (healthy)\",\"ports\":\"\"},{\"name\":\"nas-gui\",\"image\":\"filebrowser/filebrowser:latest\",\"status\":\"Up 3 days (healthy)\",\"ports\":\"127.0.0.1:8080->80/tcp\"},{\"name\":\"smartctl_exporter\",\"image\":\"monitoring-smartctl_exporter\",\"status\":\"Up 3 days\",\"ports\":\"8002/tcp\"},{\"name\":\"grafana\",\"image\":\"grafana/grafana:latest\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:3001->3000/tcp, :::3001->3000/tcp\"},{\"name\":\"bmp280_exporter\",\"image\":\"monitoring-bmp280_exporter\",\"status\":\"Up 3 days\",\"ports\":\"\"},{\"name\":\"prometheus\",\"image\":\"prom/prometheus:latest\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:9090->9090/tcp, :::9090->9090/tcp\"},{\"name\":\"sds011_exporter\",\"image\":\"monitoring-sds011_exporter\",\"status\":\"Up 3 days\",\"ports\":\"\"},{\"name\":\"github-mcp\",\"image\":\"mcp-services-github-mcp\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:3003->3001/tcp, :::3003->3001/tcp\"},{\"name\":\"search-mcp\",\"image\":\"mcp-services-search-mcp\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:3002->3002/tcp, :::3002->3002/tcp\"},{\"name\":\"node_exporter\",\"image\":\"quay.io/prometheus/node-exporter:latest\",\"status\":\"Up 3 days\",\"ports\":\"0.0.0.0:9100->9100/tcp, :::9100->9100/tcp\"},{\"name\":\"pi_airflow-dashboard-1\",\"image\":\"node:20-alpine\",\"status\":\"Exited (0) 2 months ago\",\"ports\":\"\"},{\"name\":\"mediamtx\",\"image\":\"bluenviron/mediamtx:latest\",\"status\":\"Up 3 days\",\"ports\":\"\"},{\"name\":\"pihole\",\"image\":\"pihole/pihole:latest\",\"status\":\"Up 3 days (healthy)\",\"ports\":\"\"}"
     ]
   },
   "maintenance": {
-    "last_smart_report": "2026-07-03 00:10:48",
+    "last_smart_report": "2026-07-05 03:01:24",
     "hdd_spindown": "10 min idle (APM 127, standby -S 120)",
     "smart_schedule": "Every Sunday 3am",
     "compose_stacks": "/home/bura/monitoring/docker-compose.yml, /home/bura/homelab/sunshine/docker-compose.yml, /home/bura/homelab/nas/docker-compose.yml, /home/bura/mcp-services/docker-compose.yml, /home/bura/security-lab/docker-compose.yml"
