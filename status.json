@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-07-07 01:00:27 IST",
+  "timestamp": "2026-07-08 01:00:11 IST",
   "system": {
     "hostname": "bura",
     "os": "Debian 13 (Trixie)",
     "kernel": "6.12.75+rpt-rpi-v8",
     "arch": "aarch64",
-    "uptime": "4 days, 49 minutes",
-    "uptime_seconds": 348571,
-    "load": "0.66 0.42 0.37",
-    "temperature_c": 39.4,
+    "uptime": "3 hours, 50 minutes",
+    "uptime_seconds": 13819,
+    "load": "0.49 0.30 0.29",
+    "temperature_c": 41.9,
     "throttled": "No",
     "voltage_v": 1.01,
     "cpu": {
@@ -18,11 +18,11 @@
     },
     "memory": {
       "total": "7.6Gi",
-      "used": "2.6Gi",
-      "percent": 34,
+      "used": "2.0Gi",
+      "percent": 26,
       "swap_total": "2.0Gi",
-      "swap_used": "15Mi",
-      "swap_percent": 1
+      "swap_used": "44Mi",
+      "swap_percent": 2
     }
   },
   "storage": {
@@ -30,16 +30,16 @@
       "model": "WDC WDS120G2G0A-00JH30",
       "device": "/dev/sda",
       "total": "111.8G",
-      "used": "45G",
-      "available": "60G",
-      "percent_used": 43,
+      "used": "49G",
+      "available": "55G",
+      "percent_used": 48,
       "mount": "/",
       "smart": {
         "health": "PASSED",
-        "temperature_c": "45",
-        "power_on_hours": "932",
+        "temperature_c": "46",
+        "power_on_hours": "956",
         "reallocated_sectors": "1",
-        "wearout_indicator": "0x043602280436"
+        "wearout_indicator": "0x043802280438"
       }
     },
     "hdd": {
@@ -53,10 +53,10 @@
       "state": "active/idle",
       "smart": {
         "health": "PASSED",
-        "temperature_c": "31",
-        "power_on_hours": "2067",
+        "temperature_c": "32",
+        "power_on_hours": "2091",
         "reallocated_sectors": "0",
-        "load_cycle_count": "21273"
+        "load_cycle_count": "21301"
       }
     }
   },
@@ -67,16 +67,16 @@
     "tailscale_serve": "http://bura:8080 (tailnet only) http://bura.tailcdf1f7.ts.net:8080 (tailnet only)||-- / proxy http://127.0.0.1:8080 http://bura:8081 (tailnet only) http://bura.tailcdf1f7.ts.net:8081 (tailnet only)||-- / proxy http://127.0.0.1:8081"
   },
   "containers": {
-    "running": 13,
-    "total": 14,
+    "running": 16,
+    "total": 17,
     "list": [
-      "{\"name\":\"sunshine\",\"image\":\"sunshine-custom:latest\",\"status\":\"Up 4 days\",\"ports\":\"\"},{\"name\":\"nas-samba\",\"image\":\"crazymax/samba:latest\",\"status\":\"Up 4 days (healthy)\",\"ports\":\"\"},{\"name\":\"nas-gui\",\"image\":\"filebrowser/filebrowser:latest\",\"status\":\"Up 4 days (healthy)\",\"ports\":\"127.0.0.1:8080->80/tcp\"},{\"name\":\"smartctl_exporter\",\"image\":\"monitoring-smartctl_exporter\",\"status\":\"Up 4 days\",\"ports\":\"8002/tcp\"},{\"name\":\"grafana\",\"image\":\"grafana/grafana:latest\",\"status\":\"Up 4 days\",\"ports\":\"0.0.0.0:3001->3000/tcp, :::3001->3000/tcp\"},{\"name\":\"bmp280_exporter\",\"image\":\"monitoring-bmp280_exporter\",\"status\":\"Up 4 days\",\"ports\":\"\"},{\"name\":\"prometheus\",\"image\":\"prom/prometheus:latest\",\"status\":\"Up 4 days\",\"ports\":\"0.0.0.0:9090->9090/tcp, :::9090->9090/tcp\"},{\"name\":\"sds011_exporter\",\"image\":\"monitoring-sds011_exporter\",\"status\":\"Up 4 days\",\"ports\":\"\"},{\"name\":\"github-mcp\",\"image\":\"mcp-services-github-mcp\",\"status\":\"Up 4 days\",\"ports\":\"0.0.0.0:3003->3001/tcp, :::3003->3001/tcp\"},{\"name\":\"search-mcp\",\"image\":\"mcp-services-search-mcp\",\"status\":\"Up 4 days\",\"ports\":\"0.0.0.0:3002->3002/tcp, :::3002->3002/tcp\"},{\"name\":\"node_exporter\",\"image\":\"quay.io/prometheus/node-exporter:latest\",\"status\":\"Up 4 days\",\"ports\":\"0.0.0.0:9100->9100/tcp, :::9100->9100/tcp\"},{\"name\":\"pi_airflow-dashboard-1\",\"image\":\"node:20-alpine\",\"status\":\"Exited (0) 2 months ago\",\"ports\":\"\"},{\"name\":\"mediamtx\",\"image\":\"bluenviron/mediamtx:latest\",\"status\":\"Up 4 days\",\"ports\":\"\"},{\"name\":\"pihole\",\"image\":\"pihole/pihole:latest\",\"status\":\"Up 4 days (healthy)\",\"ports\":\"\"}"
+      "{\"name\":\"gotify\",\"image\":\"gotify/server:latest\",\"status\":\"Up 2 hours (healthy)\",\"ports\":\"0.0.0.0:3006->80/tcp, :::3006->80/tcp\"},{\"name\":\"uptime-kuma\",\"image\":\"louislam/uptime-kuma:latest\",\"status\":\"Up 2 hours (healthy)\",\"ports\":\"0.0.0.0:3005->3001/tcp, :::3005->3001/tcp\"},{\"name\":\"pihole\",\"image\":\"pihole/pihole:latest\",\"status\":\"Up 2 hours (healthy)\",\"ports\":\"\"},{\"name\":\"unbound\",\"image\":\"unbound-custom\",\"status\":\"Up 2 hours\",\"ports\":\"\"},{\"name\":\"sunshine\",\"image\":\"sunshine-custom:latest\",\"status\":\"Up 4 hours\",\"ports\":\"\"},{\"name\":\"nas-samba\",\"image\":\"crazymax/samba:latest\",\"status\":\"Up 4 hours (healthy)\",\"ports\":\"\"},{\"name\":\"nas-gui\",\"image\":\"e2c417dcb861\",\"status\":\"Up 4 hours (healthy)\",\"ports\":\"127.0.0.1:8080->80/tcp\"},{\"name\":\"smartctl_exporter\",\"image\":\"monitoring-smartctl_exporter\",\"status\":\"Up 4 hours\",\"ports\":\"8002/tcp\"},{\"name\":\"grafana\",\"image\":\"cb65156f7477\",\"status\":\"Up 4 hours\",\"ports\":\"0.0.0.0:3001->3000/tcp, :::3001->3000/tcp\"},{\"name\":\"bmp280_exporter\",\"image\":\"monitoring-bmp280_exporter\",\"status\":\"Up 4 hours\",\"ports\":\"\"},{\"name\":\"prometheus\",\"image\":\"baebf434ef86\",\"status\":\"Up 4 hours\",\"ports\":\"0.0.0.0:9090->9090/tcp, :::9090->9090/tcp\"},{\"name\":\"sds011_exporter\",\"image\":\"monitoring-sds011_exporter\",\"status\":\"Up 4 hours\",\"ports\":\"\"},{\"name\":\"github-mcp\",\"image\":\"mcp-services-github-mcp\",\"status\":\"Up 4 hours\",\"ports\":\"0.0.0.0:3003->3001/tcp, :::3003->3001/tcp\"},{\"name\":\"search-mcp\",\"image\":\"mcp-services-search-mcp\",\"status\":\"Up 4 hours\",\"ports\":\"0.0.0.0:3002->3002/tcp, :::3002->3002/tcp\"},{\"name\":\"node_exporter\",\"image\":\"quay.io/prometheus/node-exporter:latest\",\"status\":\"Up 4 hours\",\"ports\":\"0.0.0.0:9100->9100/tcp, :::9100->9100/tcp\"},{\"name\":\"pi_airflow-dashboard-1\",\"image\":\"node:20-alpine\",\"status\":\"Exited (0) 2 months ago\",\"ports\":\"\"},{\"name\":\"mediamtx\",\"image\":\"0b397348eccf\",\"status\":\"Up 4 hours\",\"ports\":\"\"}"
     ]
   },
   "maintenance": {
-    "last_smart_report": "2026-07-05 03:01:24",
+    "last_smart_report": "2026-07-07 21:09:43",
     "hdd_spindown": "10 min idle (APM 127, standby -S 120)",
     "smart_schedule": "Every Sunday 3am",
-    "compose_stacks": "/home/bura/monitoring/docker-compose.yml, /home/bura/homelab/sunshine/docker-compose.yml, /home/bura/homelab/nas/docker-compose.yml, /home/bura/mcp-services/docker-compose.yml, /home/bura/security-lab/docker-compose.yml"
+    "compose_stacks": "/home/bura/docker/unbound/docker-compose.yml, /home/bura/monitoring/docker-compose.yml, /home/bura/gotify/docker-compose.yml, /home/bura/uptime-kuma/docker-compose.yml, /home/bura/homelab/sunshine/docker-compose.yml, /home/bura/homelab/nas/docker-compose.yml, /home/bura/mcp-services/docker-compose.yml, /home/bura/security-lab/docker-compose.yml"
   }
 }
