@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-07-26 01:00:07 IST",
+  "timestamp": "2026-07-27 01:00:06 IST",
   "system": {
     "hostname": "bura",
     "os": "Debian 13 (Trixie)",
     "kernel": "6.18.34+rpt-rpi-v8",
     "arch": "aarch64",
-    "uptime": "2 weeks, 3 days, 23 hours, 37 minutes",
-    "uptime_seconds": 1553855,
-    "load": "0.59 0.47 0.45",
+    "uptime": "2 weeks, 4 days, 23 hours, 37 minutes",
+    "uptime_seconds": 1640254,
+    "load": "0.70 0.47 0.42",
     "temperature_c": 44.3,
     "throttled": "No",
     "voltage_v": 1.02,
@@ -37,7 +37,7 @@
       "smart": {
         "health": "PASSED",
         "temperature_c": "47",
-        "power_on_hours": "1388",
+        "power_on_hours": "1412",
         "reallocated_sectors": "1",
         "wearout_indicator": "0x043e0228043e"
       }
@@ -54,9 +54,9 @@
       "smart": {
         "health": "PASSED",
         "temperature_c": "33",
-        "power_on_hours": "2523",
+        "power_on_hours": "2547",
         "reallocated_sectors": "0",
-        "load_cycle_count": "21773"
+        "load_cycle_count": "21787"
       }
     }
   },
@@ -74,7 +74,7 @@
     ]
   },
   "maintenance": {
-    "last_smart_report": "2026-07-19 03:01:50",
+    "last_smart_report": "2026-07-26 03:06:36",
     "hdd_spindown": "10 min idle (APM 127, standby -S 120)",
     "smart_schedule": "Every Sunday 3am",
     "compose_stacks": "/home/bura/docker/unbound/docker-compose.yml, /home/bura/monitoring/docker-compose.yml, /home/bura/gotify/docker-compose.yml, /home/bura/uptime-kuma/docker-compose.yml, /home/bura/homelab/sunshine/docker-compose.yml, /home/bura/homelab/nas/docker-compose.yml, /home/bura/mcp-services/docker-compose.yml, /home/bura/security-lab/docker-compose.yml"
