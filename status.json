@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-07-30 01:00:06 IST",
+  "timestamp": "2026-07-31 01:00:09 IST",
   "system": {
     "hostname": "bura",
     "os": "Debian 13 (Trixie)",
     "kernel": "6.18.34+rpt-rpi-v8",
     "arch": "aarch64",
-    "uptime": "3 weeks, 23 hours, 37 minutes",
-    "uptime_seconds": 1899454,
-    "load": "0.21 0.37 0.42",
-    "temperature_c": 39.9,
+    "uptime": "3 weeks, 1 day, 23 hours, 37 minutes",
+    "uptime_seconds": 1985857,
+    "load": "0.46 0.39 0.42",
+    "temperature_c": 38.9,
     "throttled": "No",
     "voltage_v": 1.02,
     "cpu": {
@@ -36,10 +36,10 @@
       "mount": "/",
       "smart": {
         "health": "PASSED",
-        "temperature_c": "43",
-        "power_on_hours": "1484",
+        "temperature_c": "42",
+        "power_on_hours": "1508",
         "reallocated_sectors": "1",
-        "wearout_indicator": "0x043f0228043f"
+        "wearout_indicator": "0x044002280440"
       }
     },
     "hdd": {
@@ -53,10 +53,10 @@
       "state": "active/idle",
       "smart": {
         "health": "PASSED",
-        "temperature_c": "30",
-        "power_on_hours": "2619",
+        "temperature_c": "29",
+        "power_on_hours": "2643",
         "reallocated_sectors": "0",
-        "load_cycle_count": "21816"
+        "load_cycle_count": "21819"
       }
     }
   },
