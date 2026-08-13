@@ -219,8 +219,8 @@
   <div class="card">
     <h3>Web GUI (FileBrowser)</h3>
     <table>
-      <tr><td>Tailnet</td><td><a href="http://bura.tailcdf1f7.ts.net:8080" target="_blank">http://bura.tailcdf1f7.ts.net:8080</a></td></tr>
-      <tr><td>Admin</td><td><span class="inline-code">admin</span> / <span class="inline-code">Admin@#2004,!</span></td></tr>
+      <tr><td>Tailnet</td><td><span class="inline-code">&lt;tailnet-host&gt;:8080</span></td></tr>
+      <tr><td>Admin</td><td><em>withheld</em></td></tr>
       <tr><td>Container</td><td><span class="inline-code">nas-gui</span> (filebrowser/filebrowser)</td></tr>
       <tr><td>Backend</td><td><span class="inline-code">127.0.0.1:8080</span> (localhost only)</td></tr>
       <tr><td>Protocol</td><td>HTTP via tailscale serve (encrypted by WireGuard)</td></tr>
@@ -229,16 +229,16 @@
   <div class="card">
     <h3>SMB (Samba)</h3>
     <table>
-      <tr><td>Host</td><td><span class="inline-code">\\bura.local</span> (LAN) or use Tailscale IP</td></tr>
+      <tr><td>Host</td><td><span class="inline-code">\\&lt;nas-host&gt;</span> (LAN) or over Tailscale</td></tr>
       <tr><td>Container</td><td><span class="inline-code">nas-samba</span> (crazymax/samba)</td></tr>
       <tr><td>Network</td><td><span class="inline-code">host</span> mode</td></tr>
     </table>
     <h3 style="margin-top:12px">Samba Users</h3>
     <table>
-      <tr><td>admin</td><td>UID 1003</td><td><span class="inline-code">Admin@#2004,!</span></td><td><span class="badge badge-purple">Full access: Admin</span></td></tr>
-      <tr><td>Cherry</td><td>UID 1004</td><td><span class="inline-code">Cherry1!</span></td><td><span class="badge badge-blue">Private: Cherry_Private</span></td></tr>
-      <tr><td>FAMILY</td><td>UID 1005</td><td><span class="inline-code">Family1!</span></td><td><span class="badge badge-blue">Private: FAMILY_Private</span></td></tr>
-      <tr><td>KAMAL</td><td>UID 1006</td><td><span class="inline-code">Kamal1!</span></td><td><span class="badge badge-blue">Private: KAMAL_Private</span></td></tr>
+      <tr><td>admin</td><td>UID 1003</td><td><em>withheld</em></td><td><span class="badge badge-purple">Full access: Admin</span></td></tr>
+      <tr><td>Cherry</td><td>UID 1004</td><td><em>withheld</em></td><td><span class="badge badge-blue">Private: Cherry_Private</span></td></tr>
+      <tr><td>FAMILY</td><td>UID 1005</td><td><em>withheld</em></td><td><span class="badge badge-blue">Private: FAMILY_Private</span></td></tr>
+      <tr><td>KAMAL</td><td>UID 1006</td><td><em>withheld</em></td><td><span class="badge badge-blue">Private: KAMAL_Private</span></td></tr>
       <tr><td>Shared</td><td colspan="3"><span class="badge badge-green">Family_Shared</span> — all users R/W</td></tr>
     </table>
   </div>
@@ -265,7 +265,7 @@
   <div class="card">
     <h3>Prometheus</h3>
     <table>
-      <tr><td>Access</td><td><a href="http://bura.tailcdf1f7.ts.net:9090" target="_blank">http://bura.tailcdf1f7.ts.net:9090</a></td></tr>
+      <tr><td>Access</td><td><span class="inline-code">&lt;tailnet-host&gt;:9090</span></td></tr>
       <tr><td>Retention</td><td>30 days</td></tr>
       <tr><td>Scrape Interval</td><td>15s (60s for sensors)</td></tr>
     </table>
@@ -273,8 +273,8 @@
   <div class="card">
     <h3>Grafana</h3>
     <table>
-      <tr><td>Access</td><td><a href="http://bura.tailcdf1f7.ts.net:3001" target="_blank">http://bura.tailcdf1f7.ts.net:3001</a></td></tr>
-      <tr><td>Login</td><td><span class="inline-code">admin</span> / <span class="inline-code">admin</span></td></tr>
+      <tr><td>Access</td><td><span class="inline-code">&lt;tailnet-host&gt;:3001</span></td></tr>
+      <tr><td>Login</td><td><em>withheld</em></td></tr>
     </table>
   </div>
   <div class="card">
@@ -343,7 +343,7 @@
 
 <h3>fstab</h3>
 <div class="card">
-<pre>UUID=2f7357f1-67a3-4e4a-898c-0296c2c055d4 /mnt/nas ext4 defaults,noatime,nofail 0 2</pre>
+<pre>UUID=&lt;nas-partition-uuid&gt; /mnt/nas ext4 defaults,noatime,nofail 0 2</pre>
 </div>
 
 <h3>Prometheus Config</h3>
@@ -379,7 +379,7 @@ scrape_configs:
 
 <div class="footer">
   Last updated: <span id="page-updated">—</span> |
-  <a href="https://github.com/burakamal13/pi-nas" target="_blank">GitHub</a>
+  <a href="https://github.com/Kamalbura/pi-nas" target="_blank">GitHub</a>
 </div>
 
 </div>
@@ -478,10 +478,11 @@ function render(data) {
 
   // Network
   if (net) {
-    document.getElementById('lan-ip').textContent = net.lan_ip || '—';
-    document.getElementById('ts-ip').textContent = net.tailscale_ip || '—';
-    document.getElementById('ts-dns').textContent = net.magicdns || '—';
-    document.getElementById('ts-serve').textContent = net.tailscale_serve || '—';
+    document.getElementById('lan-ip').textContent = net.lan || '—';
+    document.getElementById('ts-ip').textContent = net.tailscale || '—';
+    document.getElementById('ts-dns').textContent = 'not published';
+    document.getElementById('ts-serve').textContent =
+      (net.tailscale_proxies ?? 0) + ' proxy route(s)';
   }
 
   // Containers
@@ -509,7 +510,8 @@ function render(data) {
   // Maintenance
   if (maint) {
     document.getElementById('last-smart').textContent = maint.last_smart_report || '—';
-    document.getElementById('compose-stacks').textContent = maint.compose_stacks || '—';
+    document.getElementById('compose-stacks').textContent =
+      (maint.compose_stacks ?? 0) + ' stack(s)';
   }
 
   // Memory detail
@@ -518,7 +520,7 @@ function render(data) {
   }
 
   document.getElementById('page-updated').textContent = data.timestamp || '—';
-  document.title = s.hostname ? `Pi NAS — ${s.hostname}` : 'Pi NAS';
+  document.title = "Pi NAS";
 }
 
 // Load static config files

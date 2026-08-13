@@ -4,7 +4,8 @@
 set -e
 
 # Export ALL variables for Python to use
-export SYS_HOSTNAME=$(hostname)
+# Real hostname withheld; it identifies the operator and the tailnet node.
+export SYS_HOSTNAME="pi-nas"
 export SYS_UPTIME=$(uptime -p | sed 's/up //')
 export SYS_UPTIME_SECONDS=$(cat /proc/uptime | awk '{print int($1)}')
 export SYS_LOAD=$(cat /proc/loadavg | awk '{print $1, $2, $3}')
@@ -48,21 +49,25 @@ export HDD_REALLOC=$(sudo smartctl -A -d sat /dev/sdb 2>/dev/null | grep "^  5 "
 export HDD_LOAD_CYCLE=$(sudo smartctl -A -d sat /dev/sdb 2>/dev/null | grep Load_Cycle_Count | awk '{print $10}')
 export HDD_STATE=$(sudo hdparm -C /dev/sdb 2>/dev/null | grep "drive state" | cut -d: -f2 | sed 's/^ *//')
 
-export LAN_IP=$(ip -4 addr show eth0 2>/dev/null | grep inet | awk '{print $2}')
-export TAILSCALE_IP=$(ip -4 addr show tailscale0 2>/dev/null | grep inet | awk '{print $2}')
-export TAILSCALE_HOSTNAME=$(tailscale status 2>/dev/null | head -1 | awk '{print $2}')
-export MAGICDNS="${TAILSCALE_HOSTNAME}.tailcdf1f7.ts.net"
-export TAILSCALE_SERVE=$(sudo tailscale serve status 2>/dev/null | grep -v "^$" | paste -sd ' | ')
+# Network identifiers are deliberately NOT published. This page is public, and
+# an addressable host plus a port map is an attack plan. Only report whether
+# each interface is up.
+export LAN_UP=$(ip -4 addr show eth0 2>/dev/null | grep -q inet && echo "up" || echo "down")
+export TAILSCALE_UP=$(ip -4 addr show tailscale0 2>/dev/null | grep -q inet && echo "connected" || echo "offline")
+export TAILSCALE_SERVE_COUNT=$(sudo tailscale serve status 2>/dev/null | grep -c "proxy" || echo 0)
 
-export CONTAINER_LIST=$(sudo docker ps -a --format '{"name":"{{.Names}}","image":"{{.Image}}","status":"{{.Status}}","ports":"{{.Ports}}"}' 2>/dev/null | paste -sd,)
+# Port bindings omitted on purpose - publishing which services listen on
+# 0.0.0.0 and on which port is a service map, not a status page.
+export CONTAINER_LIST=$(sudo docker ps -a --format '{"name":"{{.Names}}","status":"{{.Status}}"}' 2>/dev/null | paste -sd,)
 export CONTAINER_RUNNING=$(sudo docker ps -q 2>/dev/null | wc -l)
 export CONTAINER_TOTAL=$(sudo docker ps -aq 2>/dev/null | wc -l)
 # Fix empty container list
 [ -z "$CONTAINER_LIST" ] && export CONTAINER_LIST="" || export CONTAINER_LIST
 
-export COMPOSE_STACKS=$(find /home/bura /etc -name "docker-compose.yml" -not -path "*/node_modules/*" -not -path "/home/bura/projects/*" 2>/dev/null | paste -sd ','| sed 's/,/, /g')
+# Count only - absolute paths leak the username and directory layout.
+export COMPOSE_STACKS=$(find "$HOME" /etc -name "docker-compose.yml" -not -path "*/node_modules/*" -not -path "$HOME/projects/*" 2>/dev/null | wc -l)
 
-LATEST_REPORT=$(ls -t /home/bura/smart-reports/smart-report-*.txt 2>/dev/null | head -1)
+LATEST_REPORT=$(ls -t "$HOME"/smart-reports/smart-report-*.txt 2>/dev/null | head -1)
 if [ -n "$LATEST_REPORT" ]; then
     export LAST_SMART_CHECK=$(stat -c '%y' "$LATEST_REPORT" | cut -d. -f1)
 else
@@ -116,7 +121,7 @@ d = {
                 "temperature_c": os.environ.get("SSD_TEMP", ""),
                 "power_on_hours": os.environ.get("SSD_POH", ""),
                 "reallocated_sectors": os.environ.get("SSD_REALLOC", ""),
-                "wearout_indicator": os.environ.get("SSD_WEAR", "")
+                "wearout_indicator": "redacted"
             }
         },
         "hdd": {
@@ -138,10 +143,9 @@ d = {
         }
     },
     "network": {
-        "lan_ip": os.environ.get("LAN_IP", ""),
-        "tailscale_ip": os.environ.get("TAILSCALE_IP", ""),
-        "magicdns": os.environ.get("MAGICDNS", ""),
-        "tailscale_serve": os.environ.get("TAILSCALE_SERVE", "")
+        "lan": os.environ.get("LAN_UP", "unknown"),
+        "tailscale": os.environ.get("TAILSCALE_UP", "unknown"),
+        "tailscale_proxies": int(os.environ.get("TAILSCALE_SERVE_COUNT", "0") or 0)
     },
     "containers": {
         "running": int(os.environ.get("CONTAINER_RUNNING", "0")),
@@ -152,7 +156,7 @@ d = {
         "last_smart_report": os.environ.get("LAST_SMART_CHECK", "Never"),
         "hdd_spindown": "10 min idle (APM 127, standby -S 120)",
         "smart_schedule": "Every Sunday 3am",
-        "compose_stacks": os.environ.get("COMPOSE_STACKS", "")
+        "compose_stacks": int(os.environ.get("COMPOSE_STACKS", "0") or 0)
     }
 }
 

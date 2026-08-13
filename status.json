@@ -1,7 +1,7 @@
 {
   "timestamp": "2026-08-14 01:00:08 IST",
   "system": {
-    "hostname": "bura",
+    "hostname": "pi-nas",
     "os": "Debian 13 (Trixie)",
     "kernel": "6.18.39+rpt-rpi-v8",
     "arch": "aarch64",
@@ -39,7 +39,7 @@
         "temperature_c": "46",
         "power_on_hours": "1808",
         "reallocated_sectors": "1",
-        "wearout_indicator": "0x044302280443"
+        "wearout_indicator": "redacted"
       }
     },
     "hdd": {
@@ -61,22 +61,21 @@
     }
   },
   "network": {
-    "lan_ip": "192.168.1.2/24",
-    "tailscale_ip": "100.111.13.58/32",
-    "magicdns": "bura.tailcdf1f7.ts.net",
-    "tailscale_serve": "http://bura:8080 (tailnet only) http://bura.tailcdf1f7.ts.net:8080 (tailnet only)||-- / proxy http://127.0.0.1:8080 http://bura:8081 (tailnet only) http://bura.tailcdf1f7.ts.net:8081 (tailnet only)||-- / proxy http://127.0.0.1:8081"
+    "lan": "up",
+    "tailscale": "connected",
+    "tailscale_proxies": 2
   },
   "containers": {
     "running": 16,
     "total": 17,
     "list": [
-      "{\"name\":\"gotify\",\"image\":\"85750a5535f8\",\"status\":\"Up 2 days (healthy)\",\"ports\":\"0.0.0.0:3006->80/tcp, :::3006->80/tcp\"},{\"name\":\"uptime-kuma\",\"image\":\"louislam/uptime-kuma:latest\",\"status\":\"Up 2 days (healthy)\",\"ports\":\"0.0.0.0:3005->3001/tcp, :::3005->3001/tcp\"},{\"name\":\"pihole\",\"image\":\"pihole/pihole:latest\",\"status\":\"Up 2 days (healthy)\",\"ports\":\"\"},{\"name\":\"unbound\",\"image\":\"unbound-custom\",\"status\":\"Up 2 days\",\"ports\":\"\"},{\"name\":\"sunshine\",\"image\":\"sunshine-custom:latest\",\"status\":\"Up 2 days\",\"ports\":\"\"},{\"name\":\"nas-samba\",\"image\":\"0e0e30d0698c\",\"status\":\"Up 2 days (healthy)\",\"ports\":\"\"},{\"name\":\"nas-gui\",\"image\":\"e2c417dcb861\",\"status\":\"Up 2 days (healthy)\",\"ports\":\"127.0.0.1:8080->80/tcp\"},{\"name\":\"smartctl_exporter\",\"image\":\"monitoring-smartctl_exporter\",\"status\":\"Up 2 days\",\"ports\":\"8002/tcp\"},{\"name\":\"grafana\",\"image\":\"cb65156f7477\",\"status\":\"Up 2 days\",\"ports\":\"0.0.0.0:3001->3000/tcp, :::3001->3000/tcp\"},{\"name\":\"bmp280_exporter\",\"image\":\"monitoring-bmp280_exporter\",\"status\":\"Up 2 days\",\"ports\":\"\"},{\"name\":\"prometheus\",\"image\":\"baebf434ef86\",\"status\":\"Up 2 days\",\"ports\":\"0.0.0.0:9090->9090/tcp, :::9090->9090/tcp\"},{\"name\":\"sds011_exporter\",\"image\":\"monitoring-sds011_exporter\",\"status\":\"Up 2 days\",\"ports\":\"\"},{\"name\":\"github-mcp\",\"image\":\"mcp-services-github-mcp\",\"status\":\"Up 2 days\",\"ports\":\"0.0.0.0:3003->3001/tcp, :::3003->3001/tcp\"},{\"name\":\"search-mcp\",\"image\":\"mcp-services-search-mcp\",\"status\":\"Up 2 days\",\"ports\":\"0.0.0.0:3002->3002/tcp, :::3002->3002/tcp\"},{\"name\":\"node_exporter\",\"image\":\"5635e459687a\",\"status\":\"Up 2 days\",\"ports\":\"0.0.0.0:9100->9100/tcp, :::9100->9100/tcp\"},{\"name\":\"pi_airflow-dashboard-1\",\"image\":\"node:20-alpine\",\"status\":\"Exited (0) 3 months ago\",\"ports\":\"\"},{\"name\":\"mediamtx\",\"image\":\"0b397348eccf\",\"status\":\"Up 2 days\",\"ports\":\"\"}"
+      "{\"name\": \"gotify\", \"status\": \"Up 2 days (healthy)\"},{\"name\": \"uptime-kuma\", \"status\": \"Up 2 days (healthy)\"},{\"name\": \"pihole\", \"status\": \"Up 2 days (healthy)\"},{\"name\": \"unbound\", \"status\": \"Up 2 days\"},{\"name\": \"sunshine\", \"status\": \"Up 2 days\"},{\"name\": \"nas-samba\", \"status\": \"Up 2 days (healthy)\"},{\"name\": \"nas-gui\", \"status\": \"Up 2 days (healthy)\"},{\"name\": \"smartctl_exporter\", \"status\": \"Up 2 days\"},{\"name\": \"grafana\", \"status\": \"Up 2 days\"},{\"name\": \"bmp280_exporter\", \"status\": \"Up 2 days\"},{\"name\": \"prometheus\", \"status\": \"Up 2 days\"},{\"name\": \"sds011_exporter\", \"status\": \"Up 2 days\"},{\"name\": \"github-mcp\", \"status\": \"Up 2 days\"},{\"name\": \"search-mcp\", \"status\": \"Up 2 days\"},{\"name\": \"node_exporter\", \"status\": \"Up 2 days\"},{\"name\": \"pi_airflow-dashboard-1\", \"status\": \"Exited (0) 3 months ago\"},{\"name\": \"mediamtx\", \"status\": \"Up 2 days\"}"
     ]
   },
   "maintenance": {
     "last_smart_report": "2026-08-11 04:00:25",
     "hdd_spindown": "10 min idle (APM 127, standby -S 120)",
     "smart_schedule": "Every Sunday 3am",
-    "compose_stacks": "/home/bura/docker/unbound/docker-compose.yml, /home/bura/monitoring/docker-compose.yml, /home/bura/gotify/docker-compose.yml, /home/bura/uptime-kuma/docker-compose.yml, /home/bura/homelab/sunshine/docker-compose.yml, /home/bura/homelab/nas/docker-compose.yml, /home/bura/mcp-services/docker-compose.yml, /home/bura/security-lab/docker-compose.yml"
+    "compose_stacks": 8
   }
 }
