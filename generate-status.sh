@@ -54,7 +54,7 @@ export HDD_STATE=$(sudo hdparm -C /dev/sdb 2>/dev/null | grep "drive state" | cu
 # each interface is up.
 export LAN_UP=$(ip -4 addr show eth0 2>/dev/null | grep -q inet && echo "up" || echo "down")
 export TAILSCALE_UP=$(ip -4 addr show tailscale0 2>/dev/null | grep -q inet && echo "connected" || echo "offline")
-export TAILSCALE_SERVE_COUNT=$(sudo tailscale serve status 2>/dev/null | grep -c "proxy" || echo 0)
+export TAILSCALE_SERVE_COUNT=$(sudo tailscale serve status 2>/dev/null | grep -c "proxy" || true)
 
 # Port bindings omitted on purpose - publishing which services listen on
 # 0.0.0.0 and on which port is a service map, not a status page.
