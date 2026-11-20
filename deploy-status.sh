@@ -22,12 +22,16 @@ cd "$REPO"
 
 git fetch --quiet origin main
 
-# Rebase local commits onto origin/main; if conflicts occur on generated files,
-# favor the local commit (-X theirs). If rebase still cannot apply cleanly (e.g. stale diverged branch),
-# reset to origin/main so the new status snapshot is generated cleanly on top of upstream.
-if ! git rebase -X theirs origin/main >/dev/null 2>&1; then
-  git rebase --abort 2>/dev/null || true
-  git reset --hard origin/main >/dev/null 2>&1
+# If there are local commits ahead of origin/main, rebase them onto origin/main.
+# If rebase conflicts on status snapshots, discard stale local commits and reset to origin/main.
+LOCAL_AHEAD=$(git rev-list --count origin/main..HEAD 2>/dev/null || echo 0)
+if [ "$LOCAL_AHEAD" -gt 0 ]; then
+  if ! git rebase -X theirs origin/main >/dev/null 2>&1; then
+    git rebase --abort 2>/dev/null || true
+    git reset --hard origin/main >/dev/null 2>&1
+  fi
+else
+  git merge --ff-only origin/main >/dev/null 2>&1 || true
 fi
 
 # The redaction (upstream d8f9cc1) was adopted into the local copy once. Do not

@@ -47,14 +47,15 @@ export HDD_TEMP=$(sudo smartctl -A -d sat /dev/sdb 2>/dev/null | grep Temperatur
 export HDD_POH=$(sudo smartctl -A -d sat /dev/sdb 2>/dev/null | grep Power_On_Hours | awk '{print $10}')
 export HDD_REALLOC=$(sudo smartctl -A -d sat /dev/sdb 2>/dev/null | grep "^  5 " | awk '{print $10}')
 export HDD_LOAD_CYCLE=$(sudo smartctl -A -d sat /dev/sdb 2>/dev/null | grep Load_Cycle_Count | awk '{print $10}')
-export HDD_STATE=$(sudo hdparm -C /dev/sdb 2>/dev/null | grep "drive state" | cut -d: -f2 | sed 's/^ *//')
+export HDD_STATE=$(sudo -n smartctl -i -n standby -d sat /dev/sdb 2>/dev/null | grep "Power mode is:" | cut -d: -f2 | sed 's/^ *//' || true)
+[ -z "$HDD_STATE" ] && export HDD_STATE=$(sudo -n hdparm -C /dev/sdb 2>/dev/null | grep "drive state" | cut -d: -f2 | sed 's/^ *//' || true)
 
 # Network identifiers are deliberately NOT published. This page is public, and
 # an addressable host plus a port map is an attack plan. Only report whether
 # each interface is up.
 export LAN_UP=$(ip -4 addr show eth0 2>/dev/null | grep -q inet && echo "up" || echo "down")
 export TAILSCALE_UP=$(ip -4 addr show tailscale0 2>/dev/null | grep -q inet && echo "connected" || echo "offline")
-export TAILSCALE_SERVE_COUNT=$(sudo tailscale serve status 2>/dev/null | grep -c "proxy" || true)
+export TAILSCALE_SERVE_COUNT=$(tailscale serve status 2>/dev/null | grep -c "proxy" || true)
 
 # Port bindings omitted on purpose - publishing which services listen on
 # 0.0.0.0 and on which port is a service map, not a status page.
