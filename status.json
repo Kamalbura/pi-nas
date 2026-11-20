@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-11-20 05:56:52 IST",
+  "timestamp": "2026-11-20 05:57:21 IST",
   "system": {
     "hostname": "pi-nas",
     "os": "Debian 13 (Trixie)",
     "kernel": "6.18.60+rpt-rpi-v8",
     "arch": "aarch64",
-    "uptime": "4 days, 3 hours, 4 minutes",
-    "uptime_seconds": 356699,
-    "load": "1.28 1.23 1.07",
-    "temperature_c": 41.9,
+    "uptime": "4 days, 3 hours, 5 minutes",
+    "uptime_seconds": 356730,
+    "load": "1.41 1.28 1.09",
+    "temperature_c": 42.4,
     "throttled": "No",
     "voltage_v": 1.02,
     "cpu": {
@@ -18,11 +18,11 @@
     },
     "memory": {
       "total": "7.6Gi",
-      "used": "3.3Gi",
-      "percent": 44,
+      "used": "3.2Gi",
+      "percent": 42,
       "swap_total": "2.0Gi",
       "swap_used": "1.9Gi",
-      "swap_percent": 95
+      "swap_percent": 94
     }
   },
   "storage": {
