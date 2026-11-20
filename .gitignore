@@ -1,0 +1,22 @@
+# Secrets — never commit. ~/.env on the Pi is the single source of truth for
+# every service credential; these patterns keep it and its renders out of git.
+.env
+.env.*
+!.env.example
+*.env
+.admin_pass
+.admin_token
+.github-token
+
+# Rendered-from-template configs that contain credentials
+samba-config/config.yml
+
+# Private host/service map. This repo publishes to GitHub Pages, and
+# generate-status.sh deliberately withholds hostnames, IPs, port maps and
+# paths — committing these would undo that.
+PI_NAS_AUDIT.md
+DEVICE_AUDIT_AND_SYSTEM_SPECIFICATION.md
+artifacts/
+runbook/
+learn/
+interview.md

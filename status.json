@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-11-20 05:22:10 IST",
+  "timestamp": "2026-11-20 05:55:36 IST",
   "system": {
     "hostname": "pi-nas",
     "os": "Debian 13 (Trixie)",
     "kernel": "6.18.60+rpt-rpi-v8",
     "arch": "aarch64",
-    "uptime": "4 days, 2 hours, 30 minutes",
-    "uptime_seconds": 354618,
-    "load": "0.76 0.68 0.89",
-    "temperature_c": 41.4,
+    "uptime": "4 days, 3 hours, 3 minutes",
+    "uptime_seconds": 356615,
+    "load": "1.14 1.18 1.03",
+    "temperature_c": 42.4,
     "throttled": "No",
     "voltage_v": 1.02,
     "cpu": {
@@ -18,11 +18,11 @@
     },
     "memory": {
       "total": "7.6Gi",
-      "used": "3.0Gi",
-      "percent": 40,
+      "used": "3.3Gi",
+      "percent": 44,
       "swap_total": "2.0Gi",
-      "swap_used": "1.6Gi",
-      "swap_percent": 79
+      "swap_used": "1.7Gi",
+      "swap_percent": 85
     }
   },
   "storage": {
@@ -54,7 +54,7 @@
       "smart": {
         "health": "PASSED",
         "temperature_c": "34",
-        "power_on_hours": "4865",
+        "power_on_hours": "4866",
         "reallocated_sectors": "0",
         "load_cycle_count": "24464"
       }
@@ -69,7 +69,7 @@
     "running": 19,
     "total": 21,
     "list": [
-      "{\"name\":\"qdrant\",\"status\":\"Up 3 days\"},{\"name\":\"krishna-server-voice-1\",\"status\":\"Up 4 days (healthy)\"},{\"name\":\"krishna-server-krishna-1\",\"status\":\"Up 4 days (healthy)\"},{\"name\":\"obsidian-web\",\"status\":\"Exited (255) 7 days ago\"},{\"name\":\"council-dash\",\"status\":\"Up 4 days\"},{\"name\":\"nas-samba\",\"status\":\"Up 3 days (healthy)\"},{\"name\":\"smartctl_exporter\",\"status\":\"Up 4 days\"},{\"name\":\"n8n\",\"status\":\"Up 26 minutes\"},{\"name\":\"gotify\",\"status\":\"Up 3 days (healthy)\"},{\"name\":\"omniroute\",\"status\":\"Up 3 days (healthy)\"},{\"name\":\"uptime-kuma\",\"status\":\"Up 4 days (healthy)\"},{\"name\":\"portainer\",\"status\":\"Up 4 days\"},{\"name\":\"grafana\",\"status\":\"Up 4 days\"},{\"name\":\"node_exporter\",\"status\":\"Up 4 days\"},{\"name\":\"sds011_exporter\",\"status\":\"Up 4 days\"},{\"name\":\"bmp280_exporter\",\"status\":\"Up 4 days\"},{\"name\":\"prometheus\",\"status\":\"Up 4 days\"},{\"name\":\"search-mcp\",\"status\":\"Up 4 days\"},{\"name\":\"github-mcp\",\"status\":\"Up 4 days\"},{\"name\":\"cloudflared\",\"status\":\"Up 4 days\"},{\"name\":\"mediamtx\",\"status\":\"Exited (0) 3 days ago\"}"
+      "{\"name\":\"qdrant\",\"status\":\"Up 3 days\"},{\"name\":\"krishna-server-voice-1\",\"status\":\"Up 4 days (healthy)\"},{\"name\":\"krishna-server-krishna-1\",\"status\":\"Up 4 days (healthy)\"},{\"name\":\"obsidian-web\",\"status\":\"Exited (255) 7 days ago\"},{\"name\":\"council-dash\",\"status\":\"Up 4 days\"},{\"name\":\"nas-samba\",\"status\":\"Up 3 days (healthy)\"},{\"name\":\"smartctl_exporter\",\"status\":\"Up 4 days\"},{\"name\":\"n8n\",\"status\":\"Up 59 minutes\"},{\"name\":\"gotify\",\"status\":\"Up 3 days (healthy)\"},{\"name\":\"omniroute\",\"status\":\"Up 3 days (healthy)\"},{\"name\":\"uptime-kuma\",\"status\":\"Up 4 days (healthy)\"},{\"name\":\"portainer\",\"status\":\"Up 4 days\"},{\"name\":\"grafana\",\"status\":\"Up 4 days\"},{\"name\":\"node_exporter\",\"status\":\"Up 4 days\"},{\"name\":\"sds011_exporter\",\"status\":\"Up 4 days\"},{\"name\":\"bmp280_exporter\",\"status\":\"Up 4 days\"},{\"name\":\"prometheus\",\"status\":\"Up 4 days\"},{\"name\":\"search-mcp\",\"status\":\"Up 4 days\"},{\"name\":\"github-mcp\",\"status\":\"Up 4 days\"},{\"name\":\"cloudflared\",\"status\":\"Up 4 days\"},{\"name\":\"mediamtx\",\"status\":\"Exited (0) 3 days ago\"}"
     ]
   },
   "maintenance": {
