@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-11-21 01:00:51 IST",
+  "timestamp": "2026-11-22 01:00:59 IST",
   "system": {
     "hostname": "pi-nas",
     "os": "Debian 13 (Trixie)",
     "kernel": "6.18.60+rpt-rpi-v8",
     "arch": "aarch64",
-    "uptime": "53 minutes",
-    "uptime_seconds": 3189,
-    "load": "0.52 2.79 4.78",
-    "temperature_c": 40.4,
+    "uptime": "4 hours, 41 minutes",
+    "uptime_seconds": 16890,
+    "load": "0.31 0.36 0.52",
+    "temperature_c": 39.4,
     "throttled": "No",
-    "voltage_v": 1.02,
+    "voltage_v": 1.01,
     "cpu": {
       "model": "Cortex-A72",
       "cores": 4,
@@ -18,11 +18,11 @@
     },
     "memory": {
       "total": "7.6Gi",
-      "used": "2.2Gi",
-      "percent": 29,
+      "used": "2.0Gi",
+      "percent": 26,
       "swap_total": "2.0Gi",
-      "swap_used": "1.4Gi",
-      "swap_percent": 68
+      "swap_used": "1.1Gi",
+      "swap_percent": 53
     }
   },
   "storage": {
@@ -36,8 +36,8 @@
       "mount": "/",
       "smart": {
         "health": "PASSED",
-        "temperature_c": "44",
-        "power_on_hours": "4012",
+        "temperature_c": "45",
+        "power_on_hours": "4026",
         "reallocated_sectors": "1",
         "wearout_indicator": "redacted"
       }
@@ -53,10 +53,10 @@
       "state": "ACTIVE or IDLE",
       "smart": {
         "health": "PASSED",
-        "temperature_c": "33",
-        "power_on_hours": "4884",
+        "temperature_c": "34",
+        "power_on_hours": "4907",
         "reallocated_sectors": "0",
-        "load_cycle_count": "24733"
+        "load_cycle_count": "25148"
       }
     }
   },
@@ -66,14 +66,14 @@
     "tailscale_proxies": 5
   },
   "containers": {
-    "running": 19,
+    "running": 17,
     "total": 20,
     "list": [
-      "{\"name\":\"n8n\",\"status\":\"Up 55 minutes (healthy)\"},{\"name\":\"grafana\",\"status\":\"Up 55 minutes\"},{\"name\":\"prometheus\",\"status\":\"Up 55 minutes\"},{\"name\":\"cloudflared\",\"status\":\"Up 55 minutes\"},{\"name\":\"gotify\",\"status\":\"Up 55 minutes (healthy)\"},{\"name\":\"portainer\",\"status\":\"Up 55 minutes\"},{\"name\":\"omniroute\",\"status\":\"Up 55 minutes (healthy)\"},{\"name\":\"qdrant\",\"status\":\"Up 55 minutes\"},{\"name\":\"krishna-server-voice-1\",\"status\":\"Up 55 minutes (healthy)\"},{\"name\":\"krishna-server-krishna-1\",\"status\":\"Up 55 minutes (healthy)\"},{\"name\":\"council-dash\",\"status\":\"Up 55 minutes\"},{\"name\":\"nas-samba\",\"status\":\"Up 55 minutes (healthy)\"},{\"name\":\"smartctl_exporter\",\"status\":\"Up 55 minutes\"},{\"name\":\"uptime-kuma\",\"status\":\"Up 55 minutes (healthy)\"},{\"name\":\"node_exporter\",\"status\":\"Up 55 minutes\"},{\"name\":\"sds011_exporter\",\"status\":\"Up 55 minutes\"},{\"name\":\"bmp280_exporter\",\"status\":\"Up 55 minutes\"},{\"name\":\"search-mcp\",\"status\":\"Up 55 minutes\"},{\"name\":\"github-mcp\",\"status\":\"Up 55 minutes\"},{\"name\":\"mediamtx\",\"status\":\"Exited (0) 3 days ago\"}"
+      "{\"name\":\"n8n\",\"status\":\"Up 5 hours (healthy)\"},{\"name\":\"grafana\",\"status\":\"Up 5 hours\"},{\"name\":\"prometheus\",\"status\":\"Up 5 hours\"},{\"name\":\"cloudflared\",\"status\":\"Up 5 hours\"},{\"name\":\"gotify\",\"status\":\"Up 5 hours (healthy)\"},{\"name\":\"portainer\",\"status\":\"Up 5 hours\"},{\"name\":\"omniroute\",\"status\":\"Up 5 hours (healthy)\"},{\"name\":\"qdrant\",\"status\":\"Up 5 hours\"},{\"name\":\"krishna-server-voice-1\",\"status\":\"Exited (0) 12 hours ago\"},{\"name\":\"krishna-server-krishna-1\",\"status\":\"Exited (0) 12 hours ago\"},{\"name\":\"council-dash\",\"status\":\"Up 5 hours\"},{\"name\":\"nas-samba\",\"status\":\"Up 5 hours (healthy)\"},{\"name\":\"smartctl_exporter\",\"status\":\"Up 5 hours\"},{\"name\":\"uptime-kuma\",\"status\":\"Up 5 hours (healthy)\"},{\"name\":\"node_exporter\",\"status\":\"Up 5 hours\"},{\"name\":\"sds011_exporter\",\"status\":\"Up 5 hours\"},{\"name\":\"bmp280_exporter\",\"status\":\"Up 5 hours\"},{\"name\":\"search-mcp\",\"status\":\"Up 5 hours\"},{\"name\":\"github-mcp\",\"status\":\"Up 5 hours\"},{\"name\":\"mediamtx\",\"status\":\"Exited (0) 4 days ago\"}"
     ]
   },
   "maintenance": {
-    "last_smart_report": "2026-11-21 00:04:31",
+    "last_smart_report": "2026-11-21 20:13:13",
     "hdd_spindown": "10 min idle (APM 127, standby -S 120)",
     "smart_schedule": "Every Sunday 3am",
     "compose_stacks": 15
