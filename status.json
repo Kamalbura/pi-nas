@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-11-24 01:00:37 IST",
+  "timestamp": "2026-11-25 01:00:38 IST",
   "system": {
     "hostname": "pi-nas",
     "os": "Debian 13 (Trixie)",
     "kernel": "6.18.60+rpt-rpi-v8",
     "arch": "aarch64",
-    "uptime": "45 minutes",
-    "uptime_seconds": 2743,
-    "load": "0.41 0.45 0.44",
-    "temperature_c": 40.9,
+    "uptime": "5 hours, 44 minutes",
+    "uptime_seconds": 20690,
+    "load": "0.47 0.36 0.31",
+    "temperature_c": 41.4,
     "throttled": "No",
     "voltage_v": 1.02,
     "cpu": {
@@ -18,11 +18,11 @@
     },
     "memory": {
       "total": "7.6Gi",
-      "used": "2.6Gi",
-      "percent": 34,
+      "used": "2.9Gi",
+      "percent": 38,
       "swap_total": "2.0Gi",
-      "swap_used": "0B",
-      "swap_percent": 0
+      "swap_used": "714Mi",
+      "swap_percent": 35
     }
   },
   "storage": {
@@ -36,8 +36,8 @@
       "mount": "/",
       "smart": {
         "health": "PASSED",
-        "temperature_c": "45",
-        "power_on_hours": "4047",
+        "temperature_c": "46",
+        "power_on_hours": "4056",
         "reallocated_sectors": "1",
         "wearout_indicator": "redacted"
       }
@@ -46,17 +46,17 @@
       "model": "ST9500325AS",
       "device": "/dev/sdb",
       "total": "465.8G",
-      "used": "79G",
-      "available": "356G",
+      "used": "80G",
+      "available": "355G",
       "percent_used": 19,
       "mount": "/mnt/nas (label: OLD MAN)",
       "state": "ACTIVE or IDLE",
       "smart": {
         "health": "PASSED",
-        "temperature_c": "34",
-        "power_on_hours": "4951",
+        "temperature_c": "32",
+        "power_on_hours": "4973",
         "reallocated_sectors": "0",
-        "load_cycle_count": "25956"
+        "load_cycle_count": "26302"
       }
     }
   },
@@ -69,11 +69,11 @@
     "running": 17,
     "total": 20,
     "list": [
-      "{\"name\":\"n8n\",\"status\":\"Up 47 minutes (healthy)\"},{\"name\":\"grafana\",\"status\":\"Up 47 minutes\"},{\"name\":\"prometheus\",\"status\":\"Up 47 minutes\"},{\"name\":\"cloudflared\",\"status\":\"Up 47 minutes\"},{\"name\":\"gotify\",\"status\":\"Up 47 minutes (healthy)\"},{\"name\":\"portainer\",\"status\":\"Up 47 minutes\"},{\"name\":\"omniroute\",\"status\":\"Up 47 minutes (healthy)\"},{\"name\":\"qdrant\",\"status\":\"Up 47 minutes\"},{\"name\":\"krishna-server-voice-1\",\"status\":\"Exited (0) 2 days ago\"},{\"name\":\"krishna-server-krishna-1\",\"status\":\"Exited (0) 2 days ago\"},{\"name\":\"council-dash\",\"status\":\"Up 47 minutes\"},{\"name\":\"nas-samba\",\"status\":\"Up 47 minutes (healthy)\"},{\"name\":\"smartctl_exporter\",\"status\":\"Up 47 minutes\"},{\"name\":\"uptime-kuma\",\"status\":\"Up 47 minutes (healthy)\"},{\"name\":\"node_exporter\",\"status\":\"Up 47 minutes\"},{\"name\":\"sds011_exporter\",\"status\":\"Up 47 minutes\"},{\"name\":\"bmp280_exporter\",\"status\":\"Up 47 minutes\"},{\"name\":\"search-mcp\",\"status\":\"Up 47 minutes\"},{\"name\":\"github-mcp\",\"status\":\"Up 47 minutes\"},{\"name\":\"mediamtx\",\"status\":\"Exited (0) 6 days ago\"}"
+      "{\"name\":\"n8n\",\"status\":\"Up 6 hours (healthy)\"},{\"name\":\"grafana\",\"status\":\"Up 6 hours\"},{\"name\":\"prometheus\",\"status\":\"Up 6 hours\"},{\"name\":\"cloudflared\",\"status\":\"Up 6 hours\"},{\"name\":\"gotify\",\"status\":\"Up 6 hours (healthy)\"},{\"name\":\"portainer\",\"status\":\"Up 6 hours\"},{\"name\":\"omniroute\",\"status\":\"Up 6 hours (healthy)\"},{\"name\":\"qdrant\",\"status\":\"Up 6 hours\"},{\"name\":\"krishna-server-voice-1\",\"status\":\"Exited (0) 3 days ago\"},{\"name\":\"krishna-server-krishna-1\",\"status\":\"Exited (0) 3 days ago\"},{\"name\":\"council-dash\",\"status\":\"Up 6 hours\"},{\"name\":\"nas-samba\",\"status\":\"Up 6 hours (healthy)\"},{\"name\":\"smartctl_exporter\",\"status\":\"Up 6 hours\"},{\"name\":\"uptime-kuma\",\"status\":\"Up 6 hours (healthy)\"},{\"name\":\"node_exporter\",\"status\":\"Up 6 hours\"},{\"name\":\"sds011_exporter\",\"status\":\"Up 6 hours\"},{\"name\":\"bmp280_exporter\",\"status\":\"Up 6 hours\"},{\"name\":\"search-mcp\",\"status\":\"Up 6 hours\"},{\"name\":\"github-mcp\",\"status\":\"Up 6 hours\"},{\"name\":\"mediamtx\",\"status\":\"Exited (0) 7 days ago\"}"
     ]
   },
   "maintenance": {
-    "last_smart_report": "2026-11-24 00:12:09",
+    "last_smart_report": "2026-11-24 19:10:12",
     "hdd_spindown": "10 min idle (APM 127, standby -S 120)",
     "smart_schedule": "Every Sunday 3am",
     "compose_stacks": 15
