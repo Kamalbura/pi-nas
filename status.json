@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-11-26 01:00:30 IST",
+  "timestamp": "2026-11-27 01:00:35 IST",
   "system": {
     "hostname": "pi-nas",
     "os": "Debian 13 (Trixie)",
     "kernel": "6.18.60+rpt-rpi-v8",
     "arch": "aarch64",
-    "uptime": "1 day, 5 hours, 44 minutes",
-    "uptime_seconds": 107090,
-    "load": "0.38 0.39 0.38",
+    "uptime": "2 days, 5 hours, 44 minutes",
+    "uptime_seconds": 193490,
+    "load": "0.39 0.35 0.35",
     "temperature_c": 41.4,
     "throttled": "No",
     "voltage_v": 1.02,
@@ -18,11 +18,11 @@
     },
     "memory": {
       "total": "7.6Gi",
-      "used": "2.8Gi",
-      "percent": 37,
+      "used": "3.0Gi",
+      "percent": 39,
       "swap_total": "2.0Gi",
-      "swap_used": "655Mi",
-      "swap_percent": 32
+      "swap_used": "740Mi",
+      "swap_percent": 36
     }
   },
   "storage": {
@@ -36,8 +36,8 @@
       "mount": "/",
       "smart": {
         "health": "PASSED",
-        "temperature_c": "45",
-        "power_on_hours": "4080",
+        "temperature_c": "44",
+        "power_on_hours": "4104",
         "reallocated_sectors": "1",
         "wearout_indicator": "redacted"
       }
@@ -46,30 +46,30 @@
       "model": "ST9500325AS",
       "device": "/dev/sdb",
       "total": "465.8G",
-      "used": "82G",
-      "available": "353G",
+      "used": "83G",
+      "available": "352G",
       "percent_used": 19,
       "mount": "/mnt/nas (label: OLD MAN)",
       "state": "ACTIVE or IDLE",
       "smart": {
         "health": "PASSED",
         "temperature_c": "32",
-        "power_on_hours": "4997",
+        "power_on_hours": "5021",
         "reallocated_sectors": "0",
-        "load_cycle_count": "26446"
+        "load_cycle_count": "26581"
       }
     }
   },
   "network": {
     "lan": "up",
     "tailscale": "connected",
-    "tailscale_proxies": 5
+    "tailscale_proxies": 6
   },
   "containers": {
     "running": 17,
     "total": 20,
     "list": [
-      "{\"name\":\"omniroute\",\"status\":\"Up 3 hours (healthy)\"},{\"name\":\"n8n\",\"status\":\"Up 30 hours (healthy)\"},{\"name\":\"grafana\",\"status\":\"Up 30 hours\"},{\"name\":\"prometheus\",\"status\":\"Up 30 hours\"},{\"name\":\"cloudflared\",\"status\":\"Up 30 hours\"},{\"name\":\"gotify\",\"status\":\"Up 30 hours (healthy)\"},{\"name\":\"portainer\",\"status\":\"Up 30 hours\"},{\"name\":\"qdrant\",\"status\":\"Up 30 hours\"},{\"name\":\"krishna-server-voice-1\",\"status\":\"Exited (0) 4 days ago\"},{\"name\":\"krishna-server-krishna-1\",\"status\":\"Exited (0) 4 days ago\"},{\"name\":\"council-dash\",\"status\":\"Up 30 hours\"},{\"name\":\"nas-samba\",\"status\":\"Up 30 hours (healthy)\"},{\"name\":\"smartctl_exporter\",\"status\":\"Up 30 hours\"},{\"name\":\"uptime-kuma\",\"status\":\"Up 30 hours (healthy)\"},{\"name\":\"node_exporter\",\"status\":\"Up 30 hours\"},{\"name\":\"sds011_exporter\",\"status\":\"Up 30 hours\"},{\"name\":\"bmp280_exporter\",\"status\":\"Up 30 hours\"},{\"name\":\"search-mcp\",\"status\":\"Up 30 hours\"},{\"name\":\"github-mcp\",\"status\":\"Up 30 hours\"},{\"name\":\"mediamtx\",\"status\":\"Exited (0) 8 days ago\"}"
+      "{\"name\":\"omniroute\",\"status\":\"Up 27 hours (healthy)\"},{\"name\":\"n8n\",\"status\":\"Up 2 days (healthy)\"},{\"name\":\"grafana\",\"status\":\"Up 2 days\"},{\"name\":\"prometheus\",\"status\":\"Up 2 days\"},{\"name\":\"cloudflared\",\"status\":\"Up 2 days\"},{\"name\":\"gotify\",\"status\":\"Up 2 days (healthy)\"},{\"name\":\"portainer\",\"status\":\"Up 2 days\"},{\"name\":\"qdrant\",\"status\":\"Up 2 days\"},{\"name\":\"krishna-server-voice-1\",\"status\":\"Exited (0) 5 days ago\"},{\"name\":\"krishna-server-krishna-1\",\"status\":\"Exited (0) 5 days ago\"},{\"name\":\"council-dash\",\"status\":\"Up 2 days\"},{\"name\":\"nas-samba\",\"status\":\"Up 2 days (healthy)\"},{\"name\":\"smartctl_exporter\",\"status\":\"Up 2 days\"},{\"name\":\"uptime-kuma\",\"status\":\"Up 2 days (healthy)\"},{\"name\":\"node_exporter\",\"status\":\"Up 2 days\"},{\"name\":\"sds011_exporter\",\"status\":\"Up 2 days\"},{\"name\":\"bmp280_exporter\",\"status\":\"Up 2 days\"},{\"name\":\"search-mcp\",\"status\":\"Up 2 days\"},{\"name\":\"github-mcp\",\"status\":\"Up 2 days\"},{\"name\":\"mediamtx\",\"status\":\"Exited (0) 9 days ago\"}"
     ]
   },
   "maintenance": {
